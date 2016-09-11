@@ -27,4 +27,8 @@ angular.module('contatooth').controller('ContatoController',
           $scope.mensagem = {texto: 'Não foi possível salvar o contato.'}
         });
     };
+
+    Contato.query(function(contatos){
+      $scope.contatos = contatos;
+    });
   });
