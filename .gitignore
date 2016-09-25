@@ -1,3 +1,7 @@
+.tmp
+.DS_Store
+.DS_Store?
+
 # Logs
 logs
 *.log
@@ -27,9 +31,11 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+node_modules/
 jspm_packages
-public/vendor
+public/vendor/
+dist/
+scripts/
 
 # Optional npm cache directory
 .npm
