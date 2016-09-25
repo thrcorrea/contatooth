@@ -1,4 +1,5 @@
 var contatosPage = function(){
+  
   this.visitar = function(){
     browser.get('http://localhost:3000/#/contatos');
   };
