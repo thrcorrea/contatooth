@@ -7,7 +7,7 @@ notifications:
   - thales.rcorrea@gmail.com
 env:
   global:
-    - NODE_ENV: teste
+    - NODE_ENV: test
 addons:
   sauce_connect: true
 before_install:

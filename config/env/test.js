@@ -1,5 +1,5 @@
 module.exports = {
-  env: 'teste',
+  env: 'test',
   db: 'mongodb://localhost/contatooth_teste',
   sauceTestName: 'Contatooth E2E Testing',
   sauceUser: process.env.SAUCE_USERNAME,
