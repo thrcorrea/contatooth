@@ -1,27 +1,41 @@
 language: node_js
 node_js:
-  - 0.10
+- 0.1
 services:
-  - mongodb
+- mongodb
 notifications:
-  - thales.rcorrea@gmail.com
+- thales.rcorrea@gmail.com
 env:
   global:
-    - NODE_ENV: test
+  - NODE_ENV: test
 addons:
   sauce_connect: true
 before_install:
-  - npm install -g bower@1.3
-  - npm install -g grunt-cli@0.1
-  - npm install -g karma-cli@0.0
-  - npm install -g protractor@1.5
-  - webdriver-manager update
-  - bower install
+- npm install -g bower@1.3
+- npm install -g grunt-cli@0.1
+- npm install -g karma-cli@0.0
+- npm install -g protractor@1.5
+- webdriver-manager update
+- bower install
 before_script:
-  - node test/data.js
-  - grunt
-  - cd dist
+- node test/data.js
+- grunt minifica
+before_deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis commit"
 script:
-  - karma start config/karma.config.js --single-run --browsers PhantomJS
-  - node server &
-  - protractor config/protractor.js
+- karma start config/karma.config.js --single-run --browsers PhantomJS
+- node server &
+- protractor config/protractor.js
+deploy:
+  provider: openshift
+  user: thales.rcorrea@gmail.com
+  password:
+    secure: jYKNRW9wzU5CrH9OOuuX+9uWnGBNQsjI5/CBObRtuVUaxMMvscNOlGW22zrarOIN4OjsTUDJQImr7sIICDyCGwazCUUyA14X8mOTowum31mrSICPsC4GoYGm825EM4Gn2D+w67mt8ivrTSwcwkVtfRvK2dGrlCGJdJfpDYw7IiOAO3OpU+hTyh+tgXFvqAwo0jGmn1QH2QEg6+wwXdUSVI1kSfU24tp09Fdk+oxypNCGO41Ln1op+Ln3X4Nf91B6fjOezZOoNoCJ7v5+FMCR0hNJOes//Vk/lm/OiWWL2ZodStAW5OmmMGWKmFohv/qQ8pUo1cSd/3PO50wGDke8JC66sDePi0LnMFZqH44Gtl0jJsGQX82Vs4WXZctiuKL/umjH0lUIiLvXQSb9JV6Rrb8SmwsqGHhCu8qc/QcwSyuGBpF3B9htiinohm8SmrYlbeKCq7mpbOE5PJGx2b3BIOi26pH8g5aI3me85mZrnKSi0aUOUAgmp3dZpiAdoP0sp8u69HDwv2fHpzlEMg+Y+pj9r8EoYqY5tdwBemR6jvmG6Ko9C2UxumhOHvnSk7MQOVUrL2oyVQhTWZLVRq5CPzTsuAgC4MPyV1uDphyzicZx2gqyki07R23XY9XpoMj0jxyVhU4YwIaRnzPk0qqWc4KVYhYH43+oXEIyAu6ai+E=
+  app: contatooth
+  domain: contatooth-thrcorrea.rhcloud.com
+  on:
+    repo: thrcorrea/contatooth
