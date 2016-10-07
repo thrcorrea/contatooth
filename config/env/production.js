@@ -1,6 +1,6 @@
 module.exports = {
 	env: 'production',
-	db: process.env.OPENSHIFT_MONGODB_DB_URL + 'contatooh',
+	db: process.env.OPENSHIFT_MONGODB_DB_URL + 'contatooth',
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
 	port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
