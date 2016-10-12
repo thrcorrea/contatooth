@@ -5,5 +5,5 @@ module.exports = {
 	clientSecret: process.env.CLIENT_SECRET,
 	port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
 	address: process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1",
-	domain: process.env.OPENSHIFT_APP_DNS
+	domain: 'contatooth-thrcorrea.rhcloud.com'//process.env.OPENSHIFT_APP_DNS
 };
